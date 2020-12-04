@@ -1,11 +1,13 @@
 package com.example.xyzreader.ui;
 
 
+import android.app.ActivityOptions;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.format.DateUtils;
@@ -53,7 +55,7 @@ public class ArticleListActivity extends AppCompatActivity implements
     // Use default locale format
     private SimpleDateFormat outputFormat = new SimpleDateFormat();
     // Most time functions can only handle 1902 - 2037
-    private GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2,1,1);
+    private GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2, 1, 1);
 
     private Adapter adapter;
 
@@ -64,7 +66,7 @@ public class ArticleListActivity extends AppCompatActivity implements
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        //final View toolbarContainerView = findViewById(R.id.toolbar_container);
+        final View toolbarContainerView = findViewById(R.id.app_bar_layout);
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -160,8 +162,21 @@ public class ArticleListActivity extends AppCompatActivity implements
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(Intent.ACTION_VIEW,
-                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))));
+                    Bundle bundle;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        bundle = ActivityOptions.makeSceneTransitionAnimation(ArticleListActivity.this
+                                , vh.thumbnailView
+                                , vh.thumbnailView.getTransitionName())
+                                .toBundle();
+                        startActivity(new Intent(Intent.ACTION_VIEW,
+                                        ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))),
+                                bundle);
+
+                    } else {
+
+                        startActivity(new Intent(Intent.ACTION_VIEW,
+                                ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))));
+                    }
                 }
             });
             return vh;
@@ -195,8 +210,8 @@ public class ArticleListActivity extends AppCompatActivity implements
             } else {
                 holder.subtitleView.setText(Html.fromHtml(
                         outputFormat.format(publishedDate)
-                        + "<br/>" + " by "
-                        + mCursor.getString(ArticleLoader.Query.AUTHOR)));
+                                + "<br/>" + " by "
+                                + mCursor.getString(ArticleLoader.Query.AUTHOR)));
             }
             holder.thumbnailView.setImageUrl(
                     mCursor.getString(ArticleLoader.Query.THUMB_URL),
@@ -251,7 +266,7 @@ public class ArticleListActivity extends AppCompatActivity implements
 
         @Override
         public int getNewListSize() {
-            return newCursor == null? 0 : newCursor.getCount();
+            return newCursor == null ? 0 : newCursor.getCount();
         }
 
         @Override
@@ -270,6 +285,7 @@ public class ArticleListActivity extends AppCompatActivity implements
             moveCursorsToPosition(oldItemPosition, newItemPosition);
             return getChangePayload(newCursor, oldCursor);
         }
+
         @Nullable
         public Object getChangePayload(C newCursor, C oldCursor) {
             return null;
@@ -280,8 +296,10 @@ public class ArticleListActivity extends AppCompatActivity implements
             boolean oldMoved = oldCursor.moveToPosition(oldItemPosition);
             return newMoved && oldMoved;
         }
-        /** Cursors are already moved to positions where you should obtain data by row.
-         *  Checks if contents at row are same
+
+        /**
+         * Cursors are already moved to positions where you should obtain data by row.
+         * Checks if contents at row are same
          *
          * @param oldCursor Old cursor object
          * @param newCursor New cursor object
@@ -289,8 +307,10 @@ public class ArticleListActivity extends AppCompatActivity implements
          */
         public abstract boolean areRowContentsTheSame(Cursor oldCursor, Cursor newCursor);
 
-        /** Cursors are already moved to positions where you should obtain data from row
-         *  Checks if rows are the same, ideally, check by unique id
+        /**
+         * Cursors are already moved to positions where you should obtain data from row
+         * Checks if rows are the same, ideally, check by unique id
+         *
          * @param oldCursor Old cursor object
          * @param newCursor New cursor object
          * @return See DiffUtil
