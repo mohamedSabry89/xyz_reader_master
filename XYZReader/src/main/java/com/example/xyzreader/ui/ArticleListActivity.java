@@ -1,7 +1,6 @@
 package com.example.xyzreader.ui;
 
 
-import android.app.ActivityOptions;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.DiffUtil;
@@ -51,11 +51,11 @@ public class ArticleListActivity extends AppCompatActivity implements
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss");
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss");
     // Use default locale format
-    private SimpleDateFormat outputFormat = new SimpleDateFormat();
+    private final SimpleDateFormat outputFormat = new SimpleDateFormat();
     // Most time functions can only handle 1902 - 2037
-    private GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2, 1, 1);
+    private final GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2, 1, 1);
 
     private Adapter adapter;
 
@@ -64,11 +64,11 @@ public class ArticleListActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article_list);
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar = findViewById(R.id.toolbar);
 
         final View toolbarContainerView = findViewById(R.id.app_bar_layout);
 
-        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
+        mSwipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -76,7 +76,7 @@ public class ArticleListActivity extends AppCompatActivity implements
             }
         });
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        mRecyclerView = findViewById(R.id.recycler_view);
 
         adapter = new Adapter(null);
         adapter.setHasStableIds(true);
@@ -91,6 +91,7 @@ public class ArticleListActivity extends AppCompatActivity implements
         if (savedInstanceState == null) {
             refresh();
         }
+
     }
 
     private void refresh() {
@@ -164,13 +165,12 @@ public class ArticleListActivity extends AppCompatActivity implements
                 public void onClick(View view) {
                     Bundle bundle;
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        bundle = ActivityOptions.makeSceneTransitionAnimation(ArticleListActivity.this
+                        bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(ArticleListActivity.this
                                 , vh.thumbnailView
                                 , vh.thumbnailView.getTransitionName())
                                 .toBundle();
                         startActivity(new Intent(Intent.ACTION_VIEW,
-                                        ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))),
-                                bundle);
+                                        ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))), bundle);
 
                     } else {
 
