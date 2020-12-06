@@ -35,8 +35,10 @@ import androidx.fragment.app.Fragment;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.palette.graphics.Palette;
+import androidx.transition.AutoTransition;
 import androidx.transition.Transition;
 import androidx.transition.TransitionListenerAdapter;
+import androidx.transition.TransitionManager;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
@@ -143,6 +145,10 @@ public class ArticleDetailFragment extends Fragment implements
             }
         });
 
+        AutoTransition autoTransition = new AutoTransition();
+        autoTransition.setDuration(2000);
+        TransitionManager.beginDelayedTransition(container, autoTransition);
+
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
         mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
 
@@ -241,7 +247,7 @@ public class ArticleDetailFragment extends Fragment implements
             }
             bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)
                     .substring(0, 1500)
-                    .replaceAll("(\r\n\r\n|\n\n)", "<br /><br />")));
+                    .replaceAll("(\r\n\r\n|\n\n\n)", "<br /><br />")));
             ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
                         @Override
@@ -299,7 +305,7 @@ public class ArticleDetailFragment extends Fragment implements
                 mRootView.getViewTreeObserver().removeOnPreDrawListener(this);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
-                   //getActivity().startPostponedEnterTransition();
+                   getActivity().startPostponedEnterTransition();
                 }
                 return true;
             }
