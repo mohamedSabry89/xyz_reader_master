@@ -11,7 +11,7 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="300dp"
             android:elevation="4dp">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -25,7 +25,7 @@
                 <ImageView
                     android:id="@+id/photo"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="@dimen/detail_photo_height"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
                     android:transitionName="@string/photo_transition_name"
@@ -33,7 +33,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="112dp"
+                    android:layout_height="150dp"
                     android:background="@drawable/photo_background_protection" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -42,9 +42,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/detail_card_top_margin"
+                android:layout_marginTop="0dp"
                 android:background="#fff"
-                android:elevation="2dp"
+                android:elevation="4dp"
                 android:maxWidth="@dimen/detail_card_max_width"
                 android:orientation="vertical">
 
@@ -56,7 +56,7 @@
                     android:layout_marginBottom="@dimen/detail_metabar_vert_padding"
                     android:background="#333"
                     android:orientation="vertical"
-                    android:paddingLeft="@dimen/detail_inner_horiz_margin"
+                    android:paddingStart="@dimen/detail_inner_horiz_margin"
                     android:paddingTop="@dimen/detail_metabar_vert_padding"
                     android:paddingRight="@dimen/detail_inner_horiz_margin"
                     android:paddingBottom="@dimen/detail_metabar_vert_padding">
@@ -75,7 +75,7 @@
 
                     <TextView
                         android:id="@+id/article_byline"
-                        style="?android:attr/textAppearanceSmall"
+                        style="?android:attr/textAppearanceMedium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#8fff" />
@@ -83,7 +83,6 @@
 
                 <TextView
                     android:id="@+id/article_body"
-                    style="?android:attr/textAppearanceMedium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/detail_inner_horiz_margin"
