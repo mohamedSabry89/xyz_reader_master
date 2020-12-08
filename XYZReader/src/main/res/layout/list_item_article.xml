@@ -1,10 +1,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="4dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginRight="4dp"
-    android:layout_marginBottom="4dp"
+    android:layout_margin="4dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?selectableItemBackground">
@@ -18,8 +15,9 @@
         <com.example.xyzreader.ui.DynamicHeightNetworkImageView
             android:id="@+id/thumbnail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:adjustViewBounds="true"
+            android:layout_margin="4dp"
             android:background="@android:color/white"
             android:minHeight="100dp"
             android:scaleType="centerCrop"
@@ -46,10 +44,10 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="2"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             android:paddingBottom="16dp"
-            android:textColor="#6000" />
+            android:textColor="#79000000" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

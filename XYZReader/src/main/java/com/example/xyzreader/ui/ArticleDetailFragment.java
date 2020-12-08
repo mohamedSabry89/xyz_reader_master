@@ -148,10 +148,9 @@ public class ArticleDetailFragment extends Fragment implements
         });
 
         AutoTransition autoTransition = new AutoTransition();
-        autoTransition.setDuration(2000);
-        TransitionManager.beginDelayedTransition(container, autoTransition);
+        setSharedElementEnterTransition(autoTransition);
 
-        mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
+        mPhotoView = mRootView.findViewById(R.id.photo);
         mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
 
         mStatusBarColorDrawable = new ColorDrawable(0);
@@ -307,7 +306,7 @@ public class ArticleDetailFragment extends Fragment implements
                 mRootView.getViewTreeObserver().removeOnPreDrawListener(this);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
-                   getActivity().startPostponedEnterTransition();
+                    getActivity().startPostponedEnterTransition();
                 }
                 return true;
             }
