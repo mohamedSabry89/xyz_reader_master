@@ -21,6 +21,7 @@
                 android:background="@color/photo_placeholder"
                 app:contentScrim="@color/theme_accent"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
                 <!--suppress AndroidLintContentDescription -->
                 <ImageView
                     android:id="@+id/photo"

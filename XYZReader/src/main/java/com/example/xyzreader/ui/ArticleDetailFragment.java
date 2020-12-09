@@ -28,6 +28,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ShareCompat;
@@ -71,7 +72,7 @@ public class ArticleDetailFragment extends Fragment implements
     private int mScrollY;
     private boolean mIsCard = false;
     private int mStatusBarFullOpacityBottom;
-
+    private Toolbar detailToolbar;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss");
     // Use default locale format
     private SimpleDateFormat outputFormat = new SimpleDateFormat();
@@ -150,6 +151,7 @@ public class ArticleDetailFragment extends Fragment implements
         AutoTransition autoTransition = new AutoTransition();
         setSharedElementEnterTransition(autoTransition);
 
+        //detailToolbar = mRootView.findViewById(R.id.detail_toolbar);
         mPhotoView = mRootView.findViewById(R.id.photo);
         mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
 
