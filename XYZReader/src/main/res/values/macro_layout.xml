@@ -6,6 +6,18 @@
     <dimen name="item_list_title_text">16sp</dimen>
     <dimen name="item_list_subtitle_text">16sp</dimen>
 
+    <!-- card view -->
+    <dimen name="detail_card_top_gutter">8dp</dimen>
+    <dimen name="detail_card_bottom_gutter">8dp</dimen>
+    <dimen name="detail_card_start_gutter">8dp</dimen>
+    <dimen name="detail_card_end_gutter">8dp</dimen>
+
+    <!-- card view -->
+    <dimen name="top_margin">8dp</dimen>
+    <dimen name="bottom_margin">8dp</dimen>
+    <dimen name="start_margin">8dp</dimen>
+    <dimen name="end_margin">8dp</dimen>
+
     <!-- detail -->
     <bool name="detail_is_card">false</bool>
     <dimen name="detail_photo_height">300dp</dimen>
@@ -16,4 +28,6 @@
     <dimen name="detail_metabar_title_bottom_padding">4dp</dimen>
     <dimen name="detail_body_top_margin">16dp</dimen>
     <dimen name="detail_body_bottom_margin">88dp</dimen>
+
+
 </resources>

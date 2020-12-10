@@ -7,8 +7,8 @@
     <dimen name="fab_elevation">2dp</dimen>
     <dimen name="fab_press_translation_z">6dp</dimen>
     <dimen name="fab_margin">24dp</dimen>
-
     <dimen name="elevation_standard">4dp</dimen>
     <dimen name="space_to_boarder_minus_gutter">8dp</dimen>
+    <dimen name="card_view_botom_gutter">8dp</dimen>
 
 </resources>

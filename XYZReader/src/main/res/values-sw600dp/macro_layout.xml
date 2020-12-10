@@ -1,7 +1,6 @@
 <resources>
     <!-- detail -->
     <dimen name="detail_photo_height">384dp</dimen>
-    <dimen name="detail_card_top_margin">384dp</dimen>
     <dimen name="detail_inner_horiz_margin">64dp</dimen>
     <dimen name="detail_metabar_vert_padding">32dp</dimen>
     <integer name="list_column_count">1</integer>
@@ -9,5 +8,12 @@
     <dimen name="detail_body_bottom_margin">96dp</dimen>
     <dimen name="item_list_title_text">22sp</dimen>
     <dimen name="item_list_subtitle_text">22sp</dimen>
+
+    <!-- card view -->
+    <dimen name="detail_card_top_gutter">12dp</dimen>
+    <dimen name="detail_card_bottom_gutter">12dp</dimen>
+    <dimen name="detail_card_start_gutter">12dp</dimen>
+    <dimen name="detail_card_end_gutter">12dp</dimen>
+
 
 </resources>

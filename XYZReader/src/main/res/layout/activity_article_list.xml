@@ -11,7 +11,10 @@
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/space_to_boarder_minus_gutter"
+        android:layout_marginStart="@dimen/detail_card_start_gutter"
+        android:layout_marginEnd="@dimen/space_to_boarder_minus_gutter"
+        android:layout_marginTop="@dimen/space_to_boarder_minus_gutter"
+        android:layout_marginBottom="@dimen/space_to_boarder_minus_gutter"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -39,8 +42,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:layout_gravity="bottom"
-                android:layout_marginLeft="@dimen/list_toolbar_side_margin"
-                android:layout_marginRight="@dimen/list_toolbar_side_margin"
                 app:layout_collapseMode="pin"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
@@ -55,5 +56,4 @@
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
