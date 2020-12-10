@@ -12,7 +12,7 @@
     <dimen name="detail_card_start_gutter">8dp</dimen>
     <dimen name="detail_card_end_gutter">8dp</dimen>
 
-    <!-- card view -->
+    <!-- container -->
     <dimen name="top_margin">8dp</dimen>
     <dimen name="bottom_margin">8dp</dimen>
     <dimen name="start_margin">8dp</dimen>

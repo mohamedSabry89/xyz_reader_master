@@ -5,4 +5,18 @@
     <dimen name="detail_photo_height">600dp</dimen>
     <integer name="list_column_count">2</integer>
 
+    <!-- card view -->
+    <dimen name="detail_card_top_gutter">12dp</dimen>
+    <dimen name="detail_card_bottom_gutter">12dp</dimen>
+    <dimen name="detail_card_start_gutter">12dp</dimen>
+    <dimen name="detail_card_end_gutter">12dp</dimen>
+
+    <!-- container -->
+    <dimen name="top_margin">12dp</dimen>
+    <dimen name="bottom_margin">12dp</dimen>
+    <dimen name="start_margin">12dp</dimen>
+    <dimen name="end_margin">12dp</dimen>
+
+    <dimen name="image_view_app_name">24dp</dimen>
+
 </resources>

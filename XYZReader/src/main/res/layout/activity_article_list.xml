@@ -11,10 +11,10 @@
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/detail_card_start_gutter"
-        android:layout_marginEnd="@dimen/space_to_boarder_minus_gutter"
-        android:layout_marginTop="@dimen/space_to_boarder_minus_gutter"
-        android:layout_marginBottom="@dimen/space_to_boarder_minus_gutter"
+        android:layout_marginStart="@dimen/start_margin"
+        android:layout_marginEnd="@dimen/end_margin"
+        android:layout_marginTop="@dimen/top_margin"
+        android:layout_marginBottom="@dimen/bottom_margin"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -48,7 +48,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="16dp"
+                    android:paddingStart="@dimen/image_view_app_name"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/logo"
                     tools:ignore="RtlSymmetry" />

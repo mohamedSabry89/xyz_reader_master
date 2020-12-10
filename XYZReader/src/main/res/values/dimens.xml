@@ -11,4 +11,6 @@
     <dimen name="space_to_boarder_minus_gutter">8dp</dimen>
     <dimen name="card_view_botom_gutter">8dp</dimen>
 
+    <dimen name="image_view_app_name">16dp</dimen>
+
 </resources>
