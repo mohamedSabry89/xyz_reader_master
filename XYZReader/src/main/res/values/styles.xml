@@ -35,4 +35,7 @@
         <item name="android:textSize">20sp</item>
         <item name="fontFamily">sans-serif</item>
     </style>
+
+    <style name="PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
+
 </resources>
