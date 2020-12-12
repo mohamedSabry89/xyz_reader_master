@@ -20,14 +20,16 @@
                 android:layout_height="wrap_content"
                 android:background="@color/photo_placeholder"
                 app:contentScrim="@color/theme_accent"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/detailed_toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="?actionBarSize"
+                    app:contentInsetStart="0dp"
+                    app:contentInsetStartWithNavigation="0dp"
                     app:layout_collapseMode="pin"
-                    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+                    app:theme="@style/ThemeOverlay.MaterialComponents.Light"/>
 
                 <!--suppress AndroidLintContentDescription -->
                 <ImageView

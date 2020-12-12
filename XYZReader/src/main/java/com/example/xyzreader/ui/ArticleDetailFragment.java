@@ -31,6 +31,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.app.ShareCompat;
@@ -151,16 +152,8 @@ public class ArticleDetailFragment extends Fragment implements
         AutoTransition autoTransition = new AutoTransition();
         setSharedElementEnterTransition(autoTransition);
 
-        detailToolbar = mRootView.findViewById(R.id.detailed_toolbar);
-        ((ArticleDetailActivity) getActivity()).setSupportActionBar(detailToolbar);
-        detailToolbar.setNavigationIcon(R.drawable.ic_arrow_back);
-        detailToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((ArticleDetailActivity) getActivity()).onBackPressed();
-            }
-        });
-        detailToolbar.setVisibility(View.VISIBLE);
+
+
         mPhotoView = mRootView.findViewById(R.id.photo);
         mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
 
@@ -232,6 +225,18 @@ public class ArticleDetailFragment extends Fragment implements
         TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
 
         bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
+
+        detailToolbar = mRootView.findViewById(R.id.detailed_toolbar);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(detailToolbar);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        detailToolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+        detailToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((ArticleDetailActivity) getActivity()).onBackPressed();
+            }
+        });
 
         if (mCursor != null) {
             mRootView.setAlpha(0);
