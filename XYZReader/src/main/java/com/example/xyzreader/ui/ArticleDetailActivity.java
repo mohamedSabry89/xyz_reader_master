@@ -47,6 +47,9 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
                             View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            postponeEnterTransition();
+        }
         setContentView(R.layout.activity_article_detail);
 
         LoaderManager.getInstance(this).initLoader(0, null, this);
@@ -55,8 +58,7 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
         mPager = findViewById(R.id.pager);
         mPager.setAdapter(mPagerAdapter);
         mPager.setPageMargin((int) TypedValue
-                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1,
-                        getResources().getDisplayMetrics()));
+                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics()));
         mPager.setPageMarginDrawable(new ColorDrawable(0x22000000));
 
         mPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
@@ -84,7 +86,8 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
         mUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onSupportNavigateUp();
+                //onSupportNavigateUp();
+                supportFinishAfterTransition();
             }
         });
 
@@ -171,6 +174,7 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
 
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int position) {
             mCursor.moveToPosition(position);

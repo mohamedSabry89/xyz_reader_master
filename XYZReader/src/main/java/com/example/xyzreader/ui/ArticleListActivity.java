@@ -172,7 +172,8 @@ public class ArticleListActivity extends AppCompatActivity implements
                                 , vh.thumbnailView.getTransitionName());
 
                         startActivity(new Intent(Intent.ACTION_VIEW,
-                                ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))), activityOptionsCompat.toBundle());
+                                ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))),
+                                activityOptionsCompat.toBundle());
 
                     } else {
 
