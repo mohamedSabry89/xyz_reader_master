@@ -167,15 +167,19 @@ public class ArticleListActivity extends AppCompatActivity implements
                 @Override
                 public void onClick(View view) {
 
+                    Intent intent = new Intent(Intent.ACTION_VIEW,
+                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition())));
+
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        ActivityOptions activityOptionsCompat = ActivityOptions.makeSceneTransitionAnimation(ArticleListActivity.this
+
+                        Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(ArticleListActivity.this
                                 , vh.thumbnailView
-                                , vh.thumbnailView.getTransitionName());
-                        startActivity(new Intent(Intent.ACTION_VIEW,
-                                ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))), activityOptionsCompat.toBundle());
+                                , vh.thumbnailView.getTransitionName()).toBundle();
+
+                        startActivity(intent, bundle);      
+
                     } else {
-                        startActivity(new Intent(Intent.ACTION_VIEW,
-                                ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))));
+                        startActivity(intent);
                     }
                 }
             });
