@@ -1,6 +1,7 @@
 package com.example.xyzreader.ui;
 
 
+import android.app.ActivityOptions;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -166,19 +167,19 @@ public class ArticleListActivity extends AppCompatActivity implements
                 @Override
                 public void onClick(View view) {
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(ArticleListActivity.this
-                                , vh.thumbnailView
-                                , vh.thumbnailView.getTransitionName());
+                    Intent intent = new Intent(Intent.ACTION_VIEW,
+                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition())));
 
-                        startActivity(new Intent(Intent.ACTION_VIEW,
-                                ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))),
-                                activityOptionsCompat.toBundle());
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+                        Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(ArticleListActivity.this
+                                , vh.thumbnailView
+                                , String.valueOf(R.string.photo_transition_name)).toBundle();
+
+                        startActivity(intent, bundle);      
 
                     } else {
-
-                        startActivity(new Intent(Intent.ACTION_VIEW,
-                                ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))));
+                        startActivity(intent);
                     }
                 }
             });

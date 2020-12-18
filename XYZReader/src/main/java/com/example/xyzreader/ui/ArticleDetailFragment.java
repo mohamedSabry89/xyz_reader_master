@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 
@@ -61,7 +62,6 @@ public class ArticleDetailFragment extends Fragment implements
     private View mRootView;
     private int mMutedColor = 0xFF333333;
     private ObservableScrollView mScrollView;
-    private CoordinatorLayout mDrawInsetsFrameLayout;
     private ColorDrawable mStatusBarColorDrawable;
 
     private int mTopInset;
@@ -128,8 +128,8 @@ public class ArticleDetailFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
-        mDrawInsetsFrameLayout = mRootView.findViewById(R.id.draw_insets_frame_layout);
-        /*mDrawInsetsFrameLayout.setOnInsetsCallback(new DrawInsetsFrameLayout.OnInsetsCallback() {
+        /*CoordinatorLayout mDrawInsetsFrameLayout = mRootView.findViewById(R.id.draw_insets_frame_layout);
+        mDrawInsetsFrameLayout.setOnInsetsCallback(new DrawInsetsFrameLayout.OnInsetsCallback() {
             @Override
             public void onInsetsChanged(Rect insets) {
                 mTopInset = insets.top;
@@ -147,8 +147,8 @@ public class ArticleDetailFragment extends Fragment implements
             }
         });
 
-        AutoTransition autoTransition = new AutoTransition();
-        setSharedElementEnterTransition(autoTransition);
+        //AutoTransition autoTransition = new AutoTransition();
+        //setSharedElementEnterTransition(autoTransition);
 
 
         mPhotoView = mRootView.findViewById(R.id.photo);
@@ -212,6 +212,7 @@ public class ArticleDetailFragment extends Fragment implements
     }
 
     private void bindViews() {
+
         if (mRootView == null) {
             return;
         }
@@ -225,9 +226,11 @@ public class ArticleDetailFragment extends Fragment implements
 
         detailToolbar = mRootView.findViewById(R.id.detailed_toolbar);
         ((ArticleDetailActivity) getActivity()).setSupportActionBar(detailToolbar);
-        ((ArticleDetailActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        detailToolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+        ((ArticleDetailActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((ArticleDetailActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        detailToolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back));
         detailToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

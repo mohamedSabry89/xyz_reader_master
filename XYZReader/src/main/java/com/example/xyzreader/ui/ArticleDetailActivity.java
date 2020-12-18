@@ -86,7 +86,7 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
         mUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //onSupportNavigateUp();
+                onSupportNavigateUp();
                 supportFinishAfterTransition();
             }
         });
