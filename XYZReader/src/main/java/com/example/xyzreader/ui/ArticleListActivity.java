@@ -176,7 +176,7 @@ public class ArticleListActivity extends AppCompatActivity implements
                                 , vh.thumbnailView
                                 , String.valueOf(R.string.photo_transition_name)).toBundle();
 
-                        startActivity(intent, bundle);      
+                        startActivity(intent, bundle);
 
                     } else {
                         startActivity(intent);
